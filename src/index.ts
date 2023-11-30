@@ -55,7 +55,7 @@ export default async function (initSentryOptions: Partial<PinoSentryOptions>) {
     scope.setLevel(pinoLevelToSentryLevel(pinoEvent.level));
 
     if (pinoSentryOptions.withLogRecord) {
-      scope.setContext("pino-log-record", pinoEvent);
+      scope.setContext("log-record", pinoEvent);
     }
 
     if (pinoSentryOptions.tags?.length) {
@@ -65,7 +65,7 @@ export default async function (initSentryOptions: Partial<PinoSentryOptions>) {
     if (pinoSentryOptions.context?.length) {
       const context = {};
       pinoSentryOptions.context.forEach((c) => (context[c] = get(pinoEvent, c)));
-      scope.setContext("pino-context", context);
+      scope.setContext("context", context);
     }
 
     return scope;
