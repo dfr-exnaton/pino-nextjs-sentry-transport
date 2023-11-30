@@ -8,7 +8,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dafrie/pino-nextjs-sentry-transport"
+    "url": "https://github.com/dfr-exnaton/pino-nextjs-sentry-transport"
   },
   "engines": {
     "node": "> 14"
