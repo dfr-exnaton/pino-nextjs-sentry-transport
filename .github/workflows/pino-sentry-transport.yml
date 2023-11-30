@@ -1,12 +1,9 @@
-name: Pino sentry transport
+name: Pino Nextjs sentry transport
 
 on:
   push:
     branches:
       - main
-
-env:
-  NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
 jobs:
   pino-nextjs-sentry-transport:
@@ -39,9 +36,7 @@ jobs:
       - name: Test
         run: npm run test
 
-
       - name: Release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npm run semantic-release
