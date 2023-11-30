@@ -1,4 +1,10 @@
-import { captureException, captureMessage, init, NodeOptions, SeverityLevel } from "@sentry/nextjs";
+import {
+  captureException,
+  captureMessage,
+  init,
+  NodeOptions,
+  SeverityLevel,
+} from "@sentry/nextjs";
 import { Scope } from "@sentry/types";
 import get from "lodash.get";
 import build from "pino-abstract-transport";
@@ -59,12 +65,16 @@ export default async function (initSentryOptions: Partial<PinoSentryOptions>) {
     }
 
     if (pinoSentryOptions.tags?.length) {
-      pinoSentryOptions.tags.forEach((tag) => scope.setTag(tag, get(pinoEvent, tag)));
+      pinoSentryOptions.tags.forEach((tag) =>
+        scope.setTag(tag, get(pinoEvent, tag)),
+      );
     }
 
     if (pinoSentryOptions.context?.length) {
       const context = {};
-      pinoSentryOptions.context.forEach((c) => (context[c] = get(pinoEvent, c)));
+      pinoSentryOptions.context.forEach(
+        (c) => (context[c] = get(pinoEvent, c)),
+      );
       scope.setContext("context", context);
     }
 
@@ -83,7 +93,7 @@ export default async function (initSentryOptions: Partial<PinoSentryOptions>) {
       if (level >= pinoSentryOptions.minLevel) {
         if (serializedError) {
           captureException(deserializePinoError(serializedError), (scope) =>
-            enrichScope(scope, obj)
+            enrichScope(scope, obj),
           );
         } else {
           captureMessage(obj?.msg, (scope) => enrichScope(scope, obj));
