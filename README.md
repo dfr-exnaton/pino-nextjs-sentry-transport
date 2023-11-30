@@ -1,8 +1,8 @@
 # Pino Sentry transport
 
-![NPM](https://img.shields.io/npm/l/pino-sentry-transport)
-[![npm version](https://img.shields.io/npm/v/pino-sentry-transport)](https://www.npmjs.com/package/pino-sentry-transport)
-[![GitHub Workflow Status](https://github.com/tomer-yechiel/pino-sentry-transport/actions/workflows/pino-sentry-transport.yml/badge.svg?branch=main)](https://github.com/tomer-yechiel/pino-sentry-transport/actions)
+![NPM](https://img.shields.io/npm/l/pino-nextjs-sentry-transport)
+[![npm version](https://img.shields.io/npm/v/pino-nextjs-sentry-transport)](https://www.npmjs.com/package/pino-nextjs-sentry-transport)
+[![GitHub Workflow Status](https://github.com/dafrie/pino-nextjs-sentry-transport/actions/workflows/pino-nextjs-sentry-transport.yml/badge.svg?branch=main)](https://github.com/dafrie/pino-nextjs-sentry-transport/actions)
 
 
 
@@ -11,7 +11,7 @@ This module provides a 'transport' for pino that sends errors to Sentry.
 ## Install
 
 ```shell
-npm i @sentry/node pino-sentry-transport
+npm i @sentry/node pino-nextjs-sentry-transport
 ```
 
 ## usage
@@ -21,7 +21,7 @@ import pino from "pino";
 
 const logger = pino({
     transport: {
-        target: "pino-sentry-transport",
+        target: "pino-nextjs-sentry-transport",
         options: {
             sentry: {
                 dsn: "https://<key>:<secret>@sentry.io/<project>",

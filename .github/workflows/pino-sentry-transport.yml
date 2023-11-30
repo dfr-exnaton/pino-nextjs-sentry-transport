@@ -9,7 +9,7 @@ env:
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
 jobs:
-  pino-sentry-transport:
+  pino-nextjs-sentry-transport:
     runs-on: ubuntu-latest
 
     concurrency:
