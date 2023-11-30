@@ -25,7 +25,7 @@ const logger = pino({
       tags: ["id"], // sentry tags to add to the event, uses lodash.get to get the value from the log record
       context: ["hostname"], // sentry context to add to the event, uses lodash.get to get the value from the log record,
       minLevel: 40, // which level to send to sentry
-      skipSentryInitialization: flase, // default true - if you want that the transport to initialise Sentry. In this case, you also need to provide the sentry init object:
+      skipSentryInitialization: false, // default true - if you want that the transport to initialize Sentry. In this case, you also need to provide the sentry init object:
       //       sentry: {
       //  dsn: "https://<key>:<secret>@sentry.io/<project>",
       // additional options for sentry
