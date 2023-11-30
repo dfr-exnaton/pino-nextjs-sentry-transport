@@ -1,7 +1,15 @@
 {
   "version": "0.1",
   "language": "en",
-  "words": ["esbuild", "rmrf", "pino-nextjs-sentry-transport", "socio", "octocat", "pino"],
+  "words": [
+    "esbuild",
+    "rmrf",
+    "pino-nextjs-sentry-transport",
+    "socio",
+    "octocat",
+    "pino",
+    "nextjs"
+  ],
   "flagWords": [],
   "ignorePaths": [
     "package.json",
