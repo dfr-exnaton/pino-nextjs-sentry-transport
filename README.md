@@ -9,7 +9,7 @@ This module provides a 'transport' for pino that sends errors to Sentry.
 ## Install
 
 ```shell
-npm i @sentry/node pino-nextjs-sentry-transport
+npm i @sentry/nextjs pino-nextjs-sentry-transport
 ```
 
 ## usage
@@ -21,15 +21,15 @@ const logger = pino({
   transport: {
     target: "pino-nextjs-sentry-transport",
     options: {
-      sentry: {
-        dsn: "https://<key>:<secret>@sentry.io/<project>",
-        // additional options for sentry
-      },
       withLogRecord: true, // default false - send the log record to sentry as a context.(if its more then 8Kb Sentry will throw an error)
       tags: ["id"], // sentry tags to add to the event, uses lodash.get to get the value from the log record
       context: ["hostname"], // sentry context to add to the event, uses lodash.get to get the value from the log record,
       minLevel: 40, // which level to send to sentry
-      skipSentryInitialization: true, // default false - if you want to initialize sentry by yourself
+      skipSentryInitialization: flase, // default true - if you want that the transport to initialise Sentry. In this case, you also need to provide the sentry init object:
+      //       sentry: {
+      //  dsn: "https://<key>:<secret>@sentry.io/<project>",
+      // additional options for sentry
+      // },
     },
   },
 });
