@@ -1,9 +1,9 @@
 import { Transform } from "stream";
-import { captureException, captureMessage, init } from "@sentry/node";
+import { captureException, captureMessage, init } from "@sentry/nextjs";
 import { afterEach, expect, test, vi } from "vitest";
 import pinoSentryTransport from "../index";
 
-vi.mock("@sentry/node", () => {
+vi.mock("@sentry/nextjs", () => {
   const captureException = vi.fn();
   const captureMessage = vi.fn();
   const init = vi.fn();
@@ -18,6 +18,7 @@ test("should initialize Sentry", async () => {
   const sentry = { dsn: "fake dsn" };
   await pinoSentryTransport({
     sentry,
+    skipSentryInitialization: false,
   });
 
   expect(init).toHaveBeenCalledOnce();
@@ -27,7 +28,6 @@ test("should initialize Sentry", async () => {
 test("should not initialized Sentry if flag is true", async () => {
   await pinoSentryTransport({
     sentry: { dsn: "fake dsn" },
-    skipSentryInitialization: true,
   });
 
   expect(init).not.toHaveBeenCalled();
@@ -37,6 +37,7 @@ test("should send logs to Sentry if message level is above the threshold", async
   const transform = (await pinoSentryTransport({
     sentry: { dsn: "fake dsn" },
     minLevel: 50,
+    skipSentryInitialization: false,
   })) as Transform;
 
   const logs = [
@@ -99,6 +100,7 @@ test("should send Errors to Sentry", async () => {
   const transform = (await pinoSentryTransport({
     sentry: { dsn: "fake dsn" },
     minLevel: 50,
+    skipSentryInitialization: false,
   })) as Transform;
 
   const logs = [
